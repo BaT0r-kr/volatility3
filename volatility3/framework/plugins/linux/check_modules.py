@@ -6,7 +6,7 @@ import logging
 from typing import List, Dict, Generator
 
 import volatility3.framework.symbols.linux.utilities.modules as linux_utilities_modules
-from volatility3.framework import interfaces, deprecation, renderers
+from volatility3.framework import constants, interfaces, deprecation, renderers
 from volatility3.framework.configuration import requirements
 from volatility3.framework.objects import utility
 from volatility3.framework.symbols.linux import extensions
@@ -43,6 +43,11 @@ class Check_modules(interfaces.plugins.PluginInterface):
     @classmethod
     def get_requirements(cls) -> List[interfaces.configuration.RequirementInterface]:
         return [
+            requirements.ModuleRequirement(
+                name="kernel",
+                description="Linux kernel",
+                architectures=constants.architectures.LINUX_ARCHS,
+            ),
             requirements.VersionRequirement(
                 name="modules",
                 component=linux_utilities_modules.Modules,
