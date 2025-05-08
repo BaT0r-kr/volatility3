@@ -31,6 +31,11 @@ class Lsmod(plugins.PluginInterface):
                 architectures=constants.architectures.LINUX_ARCHS,
             ),
             requirements.VersionRequirement(
+                name="linux_utilities_modules",
+                component=linux_utilities_modules.Modules,
+                version=(3, 0, 0),
+            ),
+            requirements.VersionRequirement(
                 name="linux_utilities_modules_module_display_plugin",
                 component=linux_utilities_modules.ModuleDisplayPlugin,
                 version=(2, 0, 0),
